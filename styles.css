@@ -1,0 +1,109 @@
+/* ===== Переменные ===== */
+:root {
+  --bg: #0f1115;
+  --text: #f1f3f7;
+  --muted: #a3a9b8;
+  --accent: #7c5cff;
+  --accent-hover: #9479ff;
+
+  --container: 1120px;
+  --gutter: 16px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== База ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* ===== Кнопка ===== */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== Первый экран ===== */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(124, 92, 255, 0.25), transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(0, 200, 255, 0.12), transparent 45%);
+}
+
+.hero__name {
+  color: var(--muted);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.hero__title {
+  font-size: clamp(36px, 9vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+  margin-bottom: 32px;
+}
+
+/* ===== Планшет и ПК ===== */
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+}
