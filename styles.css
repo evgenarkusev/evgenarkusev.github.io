@@ -200,6 +200,7 @@ p {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  scroll-margin-top: 16px; /* зазор под шапкой при переходе по ссылке «Про мене» */
 }
 
 /* Фото горизонтальное, Евген в центре кадра: слегка обрезаем по краям */
