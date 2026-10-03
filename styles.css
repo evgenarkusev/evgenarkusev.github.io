@@ -1,11 +1,16 @@
 /* ===== Переменные ===== */
 :root {
   --bg: #0f1115;
+  --bg-alt: #161922;
+  --card: #1d212c;
+  --border: #2a2f3c;
   --text: #f1f3f7;
   --muted: #a3a9b8;
   --accent: #7c5cff;
   --accent-hover: #9479ff;
 
+  --radius: 16px;
+  --header-h: 64px;
   --container: 1120px;
   --gutter: 16px;
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -20,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h); /* чтобы шапка не закрывала заголовки при переходе по якорю */
 }
 
 body {
@@ -32,12 +38,18 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-h1 {
+h1, h2, h3 {
   margin: 0;
   line-height: 1.2;
 }
@@ -57,40 +69,105 @@ p {
   color: var(--accent);
 }
 
-/* ===== Кнопка ===== */
+/* ===== Кнопки ===== */
 .btn {
   display: inline-block;
   padding: 14px 28px;
   border-radius: 999px;
+  border: 2px solid var(--accent);
   background: var(--accent);
   color: #fff;
   font-weight: 800;
   text-align: center;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
 
 .btn:hover {
   background: var(--accent-hover);
+  border-color: var(--accent-hover);
   transform: translateY(-2px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn--outline:hover {
+  background: transparent;
+  border-color: var(--accent);
+}
+
+.btn--small {
+  padding: 8px 18px;
+  font-size: 14px;
+}
+
+/* ===== Шапка ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(15, 17, 21, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav {
+  display: none; /* на телефоне скрыто, остаётся кнопка «Связаться» */
+}
+
+.nav a {
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: var(--text);
 }
 
 /* ===== Первый экран ===== */
 .hero {
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: calc(75vh - var(--header-h));
+  min-height: calc(75svh - var(--header-h));
   display: flex;
   align-items: center;
-  padding: 48px 0;
+  padding: 40px 0;
   background:
     radial-gradient(circle at 80% 20%, rgba(124, 92, 255, 0.25), transparent 50%),
     radial-gradient(circle at 10% 90%, rgba(0, 200, 255, 0.12), transparent 45%);
+}
+
+/* На телефоне половины идут друг под другом, на ПК стоят рядом */
+.hero__inner {
+  display: grid;
+  gap: 32px;
 }
 
 .hero__name {
   color: var(--muted);
   font-size: 20px;
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .hero__title {
@@ -98,12 +175,223 @@ p {
   font-weight: 800;
   letter-spacing: -0.02em;
   max-width: 14ch;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+
+/* ===== Секции ===== */
+.section {
+  padding: 40px 0;
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section__title {
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+/* ===== Обо мне (правая половина первого экрана) ===== */
+.about {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Фото горизонтальное, Евген в центре кадра: слегка обрезаем по краям */
+.about__photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.about__text {
+  padding: 20px;
+}
+
+.about__title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.about__text p {
+  color: var(--muted);
+}
+
+.about__text p + p {
+  margin-top: 12px;
+}
+
+/* ===== Карточки (услуги и работы) ===== */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.card,
+.work {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover,
+.work:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card {
+  padding: 20px;
+}
+
+.card__icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 14px;
+}
+
+.card h3,
+.work__body h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.card p,
+.work__body p {
+  color: var(--muted);
+}
+
+/* ===== Работы ===== */
+.work {
+  overflow: hidden;
+}
+
+/* Фото сверху карточек услуг и работ (800x500, WebP) */
+.work__preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.work__body {
+  padding: 18px 20px;
+}
+
+/* ===== Контакты ===== */
+.contacts {
+  text-align: center;
+}
+
+.contacts .section__title {
+  margin-bottom: 8px;
+}
+
+.contacts__sub {
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.contacts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.contacts__list .btn {
+  overflow-wrap: anywhere;
+}
+
+/* ===== Подвал ===== */
+.footer {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  /* запас снизу, чтобы плавающая кнопка не закрывала подвал */
+  padding-bottom: calc(18px + 80px + env(safe-area-inset-bottom));
+}
+
+/* ===== Плавающая кнопка (телефон) ===== */
+/* Круглая, в правом нижнем углу: туда сам дотягивается большой палец правой руки */
+.float-cta {
+  position: fixed;
+  right: var(--gutter);
+  bottom: calc(20px + env(safe-area-inset-bottom)); /* не залезать под полоску «домой» на iPhone */
+  z-index: 20;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.5);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.float-cta:active {
+  background: var(--accent-hover);
+  transform: scale(0.92); /* отклик на нажатие */
 }
 
 /* ===== Планшет и ПК ===== */
 @media (min-width: 768px) {
   :root {
     --gutter: 32px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  .header__cta,
+  .float-cta {
+    display: none; /* на ПК хватает навигации и кнопки на первом экране */
+  }
+
+  .footer {
+    padding-bottom: 18px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  /* Две половины: слева информация и кнопка, справа фото и «Обо мне» */
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .hero__title {
+    font-size: clamp(40px, 5vw, 60px);
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .contacts__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: none;
   }
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Вкладка и поиск -->
-  <title>Евген — современные сайты под ключ</title>
-  <meta name="description" content="Привет, я Евген. Создаю современные сайты под ключ. Нужен сайт? Жми «Связаться», обсудим твой проект.">
+  <title>Євген — сучасні сайти під ключ</title>
+  <meta name="description" content="Привіт, я Євген. Створюю сучасні сайти під ключ. Потрібен сайт? Тисни «Зв’язатися», обговоримо твій проєкт.">
 
   <!-- Иконка вкладки -->
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -13,15 +13,15 @@
 
   <!-- Превью в мессенджерах и соцсетях (Open Graph) -->
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Евген">
-  <meta property="og:title" content="Евген — современные сайты под ключ">
-  <meta property="og:description" content="Привет, я Евген. Создаю современные сайты под ключ. Нужен сайт? Жми «Связаться», обсудим твой проект.">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:site_name" content="Євген">
+  <meta property="og:title" content="Євген — сучасні сайти під ключ">
+  <meta property="og:description" content="Привіт, я Євген. Створюю сучасні сайти під ключ. Потрібен сайт? Тисни «Зв’язатися», обговоримо твій проєкт.">
   <!-- После публикации замени на полный адрес: https://твой-домен/images/og-image.jpg -->
   <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Евген в парке у фонтана">
+  <meta property="og:image:alt" content="Євген у парку біля фонтану">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,18 +30,137 @@
 </head>
 <body>
 
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo">Євген<span>.</span></a>
+      <nav class="nav">
+        <a href="#about">Про мене</a>
+        <a href="#services">Послуги</a>
+        <a href="#works">Роботи</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+      <a href="#contacts" class="btn btn--small header__cta">Зв’язатися</a>
+    </div>
+  </header>
+
   <main>
 
-    <!-- 1. Первый экран -->
+    <!-- 1. Первый экран: слева информация и кнопка, справа фото и «Обо мне» -->
     <section id="hero" class="hero">
+      <div class="container hero__inner">
+
+        <div class="hero__info">
+          <p class="hero__name">Євген</p>
+          <h1 class="hero__title">Створюю сучасні сайти <span class="accent">під ключ</span></h1>
+          <a href="#contacts" class="btn">Зв’язатися</a>
+        </div>
+
+        <div id="about" class="about">
+          <img class="about__photo" src="images/photo.webp" width="1280" height="670" alt="Євген у парку біля фонтану">
+          <div class="about__text">
+            <h2 class="about__title">Про мене</h2>
+            <p>Мене звати Євген. Я роблю сайти, які швидко завантажуються, гарно виглядають на будь-якому пристрої та приводять тобі клієнтів.</p>
+            <p>Працюю напряму, без посередників: ти завжди знаєш, на якому етапі проєкт, і отримуєш результат вчасно.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Что я делаю -->
+    <section id="services" class="section section--alt">
       <div class="container">
-        <p class="hero__name">Евген</p>
-        <h1 class="hero__title">Создаю современные сайты <span class="accent">под ключ</span></h1>
-        <a href="#contacts" class="btn">Связаться</a>
+        <h2 class="section__title">Що я роблю</h2>
+        <div class="cards">
+          <!-- Фото: Unsplash (unsplash.com/photos/KxVlKiqQObU) -->
+          <article class="work">
+            <img class="work__preview" src="images/service-design.webp" width="800" height="500" loading="lazy" alt="Планшет з ескізами макета сайту">
+            <div class="work__body">
+              <img class="card__icon" src="images/icon-design.svg" width="56" height="56" alt="" aria-hidden="true">
+              <h3>Дизайн</h3>
+              <p>Продумую структуру й малюю макет під твій бізнес і твоїх клієнтів.</p>
+            </div>
+          </article>
+          <!-- Фото: Unsplash (unsplash.com/photos/nBXwqxjDa5c) -->
+          <article class="work">
+            <img class="work__preview" src="images/service-dev.webp" width="800" height="500" loading="lazy" alt="Ноутбук з кодом на екрані">
+            <div class="work__body">
+              <img class="card__icon" src="images/icon-dev.svg" width="56" height="56" alt="" aria-hidden="true">
+              <h3>Верстка та розробка</h3>
+              <p>Збираю швидкий адаптивний сайт, який чудово працює на телефоні.</p>
+            </div>
+          </article>
+          <!-- Фото: Unsplash (unsplash.com/photos/uj3hvdfQujI) -->
+          <article class="work">
+            <img class="work__preview" src="images/service-launch.webp" width="800" height="500" loading="lazy" alt="Старт ракети">
+            <div class="work__body">
+              <img class="card__icon" src="images/icon-launch.svg" width="56" height="56" alt="" aria-hidden="true">
+              <h3>Запуск і підтримка</h3>
+              <p>Підключаю домен і хостинг, вношу правки й допомагаю після запуску.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Примеры работ (заглушки: замени на свои проекты) -->
+    <section id="works" class="section">
+      <div class="container">
+        <h2 class="section__title">Приклади робіт</h2>
+        <div class="cards">
+          <article class="work">
+            <!-- Фото: Unsplash (unsplash.com/photos/Tz6004NuNL8) -->
+            <img class="work__preview" src="images/work-coffee.webp" width="800" height="500" loading="lazy" alt="Чашка капучино з серцем на пінці">
+            <div class="work__body">
+              <h3>Сайт кав’ярні</h3>
+              <p>Лендинг з меню та онлайн-бронюванням столиків.</p>
+            </div>
+          </article>
+          <article class="work">
+            <!-- Фото: Unsplash (unsplash.com/photos/HF3dwty75uk) -->
+            <img class="work__preview" src="images/work-yoga.webp" width="800" height="500" loading="lazy" alt="Дівчина займається йогою на килимку">
+            <div class="work__body">
+              <h3>Студія йоги</h3>
+              <p>Сайт з розкладом занять і записом на пробний урок.</p>
+            </div>
+          </article>
+          <article class="work">
+            <!-- Фото: Unsplash (unsplash.com/photos/MfuqFoaDtlU) -->
+            <img class="work__preview" src="images/work-renovation.webp" width="800" height="500" loading="lazy" alt="Затишна вітальня після ремонту">
+            <div class="work__body">
+              <h3>Ремонт квартир</h3>
+              <p>Сайт послуг з калькулятором вартості та фото об’єктів.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Контакты (заглушки: замени на свои) -->
+    <section id="contacts" class="section section--alt">
+      <div class="container contacts">
+        <h2 class="section__title">Обговорімо твій проєкт</h2>
+        <p class="contacts__sub">Напиши мені, і я відповім протягом дня.</p>
+        <div class="contacts__list">
+          <a href="https://t.me/username" class="btn" target="_blank" rel="noopener">Telegram</a>
+          <a href="mailto:email@example.com" class="btn btn--outline">email@example.com</a>
+          <a href="tel:+380000000000" class="btn btn--outline">+380 00 000 00 00</a>
+        </div>
       </div>
     </section>
 
   </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Євген. Сайти під ключ.</div>
+  </footer>
+
+  <!-- Плавающая круглая кнопка в правом нижнем углу, под большим пальцем (только на телефоне) -->
+  <a href="#contacts" class="float-cta" aria-label="Зв’язатися">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+      <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </a>
 
 </body>
 </html>
