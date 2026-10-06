@@ -171,5 +171,26 @@
     </svg>
   </a>
 
+  <!-- События Google Analytics: главная кнопка, форма заявки, клики по контактам -->
+  <script>
+    function track(name) {
+      if (typeof gtag === 'function') gtag('event', name, { transport_type: 'beacon' });
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (link.matches('.hero .btn')) track('click_hero_button');
+      else if (href.indexOf('t.me/') !== -1) track('click_telegram');
+      else if (href.indexOf('mailto:') === 0) track('click_email');
+      else if (href.indexOf('wa.me/') !== -1 || href.indexOf('whatsapp.com') !== -1) track('click_whatsapp');
+    });
+
+    document.addEventListener('submit', function () {
+      track('submit_lead_form');
+    });
+  </script>
+
 </body>
 </html>
