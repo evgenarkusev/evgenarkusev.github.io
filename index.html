@@ -27,14 +27,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTJVCSR73R"></script>
+  <!-- Google Analytics + Consent Mode V2: пока нет согласия, всё запрещено и скрипт Google даже не загружается -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied'
+    });
 
-    gtag('config', 'G-JTJVCSR73R');
+    var GA_ID = 'G-JTJVCSR73R';
+    var gaLoaded = false;
+
+    // Вызывается только после «Прийняти»
+    function loadAnalytics() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+
+    // Запомненный выбор человека (если хранилище недоступно, просто спросим снова)
+    var consentChoice = null;
+    try { consentChoice = localStorage.getItem('analytics-consent'); } catch (e) {}
+    if (consentChoice === 'granted') loadAnalytics();
   </script>
 </head>
 <body>
@@ -171,10 +194,34 @@
     </svg>
   </a>
 
+  <!-- Баннер согласия на аналитику -->
+  <div class="consent" id="consent" role="dialog" aria-labelledby="consent-title" hidden>
+    <h2 class="consent__title" id="consent-title">Аналітика на сайті</h2>
+    <p class="consent__text">Я використовую Google Analytics, щоб бачити, що на сайті працює, а що ні. Ти можеш погодитися або відмовитися, сайт працюватиме однаково.</p>
+    <div class="consent__actions">
+      <button type="button" class="btn btn--small" id="consent-accept">Прийняти</button>
+      <button type="button" class="btn btn--small btn--outline" id="consent-decline">Відхилити</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var banner = document.getElementById('consent');
+      function choose(value) {
+        try { localStorage.setItem('analytics-consent', value); } catch (e) {}
+        banner.hidden = true;
+        if (value === 'granted') loadAnalytics();
+      }
+      if (consentChoice === null) banner.hidden = false;
+      document.getElementById('consent-accept').addEventListener('click', function () { choose('granted'); });
+      document.getElementById('consent-decline').addEventListener('click', function () { choose('denied'); });
+    })();
+  </script>
+
   <!-- События Google Analytics: главная кнопка, форма заявки, клики по контактам -->
   <script>
     function track(name) {
-      if (typeof gtag === 'function') gtag('event', name, { transport_type: 'beacon' });
+      if (gaLoaded) gtag('event', name, { transport_type: 'beacon' });
     }
 
     document.addEventListener('click', function (e) {

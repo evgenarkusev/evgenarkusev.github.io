@@ -349,10 +349,56 @@ p {
   transform: scale(0.92); /* отклик на нажатие */
 }
 
+/* ===== Баннер согласия на аналитику ===== */
+.consent {
+  position: fixed;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 30; /* выше плавающей кнопки */
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.consent[hidden] {
+  display: none;
+}
+
+.consent__title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.consent__text {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.consent__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.consent__actions .btn {
+  flex: 1;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 /* ===== Планшет и ПК ===== */
 @media (min-width: 768px) {
   :root {
     --gutter: 32px;
+  }
+
+  .consent {
+    right: auto;
+    max-width: 440px;
   }
 
   .nav {
