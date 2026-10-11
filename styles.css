@@ -1,4 +1,4 @@
-/* ===== Переменные ===== */
+/* ===== Змінні ===== */
 :root {
   --bg: #0f1115;
   --bg-alt: #161922;
@@ -16,7 +16,7 @@
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-/* ===== База ===== */
+/* ===== Основа ===== */
 *,
 *::before,
 *::after {
@@ -25,7 +25,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h); /* чтобы шапка не закрывала заголовки при переходе по якорю */
+  scroll-padding-top: var(--header-h); /* щоб шапка не закривала заголовки при переході за якорем */
 }
 
 body {
@@ -132,7 +132,7 @@ p {
 }
 
 .nav {
-  display: none; /* на телефоне скрыто, остаётся кнопка «Связаться» */
+  display: none; /* на телефоні приховано, лишається кнопка «Зв’язатися» */
 }
 
 .nav a {
@@ -145,7 +145,7 @@ p {
   color: var(--text);
 }
 
-/* ===== Первый экран ===== */
+/* ===== Перший екран ===== */
 .hero {
   min-height: calc(75vh - var(--header-h));
   min-height: calc(75svh - var(--header-h));
@@ -157,7 +157,7 @@ p {
     radial-gradient(circle at 10% 90%, rgba(0, 200, 255, 0.12), transparent 45%);
 }
 
-/* На телефоне половины идут друг под другом, на ПК стоят рядом */
+/* На телефоні половини йдуть одна під одною, на ПК стоять поруч */
 .hero__inner {
   display: grid;
   gap: 32px;
@@ -178,7 +178,7 @@ p {
   margin-bottom: 24px;
 }
 
-/* ===== Секции ===== */
+/* ===== Секції ===== */
 .section {
   padding: 40px 0;
 }
@@ -194,16 +194,16 @@ p {
   margin-bottom: 20px;
 }
 
-/* ===== Обо мне (правая половина первого экрана) ===== */
+/* ===== Про мене (права половина першого екрана) ===== */
 .about {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  scroll-margin-top: 16px; /* зазор под шапкой при переходе по ссылке «Про мене» */
+  scroll-margin-top: 16px; /* відступ під шапкою при переході за посиланням «Про мене» */
 }
 
-/* Фото горизонтальное, Евген в центре кадра: слегка обрезаем по краям */
+/* Фото горизонтальне, Євген у центрі кадру: трохи обрізаємо по краях */
 .about__photo {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -230,7 +230,7 @@ p {
   margin-top: 12px;
 }
 
-/* ===== Карточки (услуги и работы) ===== */
+/* ===== Картки (послуги та роботи) ===== */
 .cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -272,12 +272,12 @@ p {
   color: var(--muted);
 }
 
-/* ===== Работы ===== */
+/* ===== Роботи ===== */
 .work {
   overflow: hidden;
 }
 
-/* Фото сверху карточек услуг и работ (800x500, WebP) */
+/* Фото зверху карток послуг і робіт (800x500, WebP) */
 .work__preview {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -288,7 +288,7 @@ p {
   padding: 18px 20px;
 }
 
-/* ===== Контакты ===== */
+/* ===== Контакти ===== */
 .contacts {
   text-align: center;
 }
@@ -315,23 +315,23 @@ p {
   overflow-wrap: anywhere;
 }
 
-/* ===== Подвал ===== */
+/* ===== Підвал ===== */
 .footer {
   padding: 18px 0;
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 14px;
   text-align: center;
-  /* запас снизу, чтобы плавающая кнопка не закрывала подвал */
+  /* запас знизу, щоб плаваюча кнопка не закривала підвал */
   padding-bottom: calc(18px + 80px + env(safe-area-inset-bottom));
 }
 
-/* ===== Плавающая кнопка (телефон) ===== */
-/* Круглая, в правом нижнем углу: туда сам дотягивается большой палец правой руки */
+/* ===== Плаваюча кнопка (телефон) ===== */
+/* Кругла, у правому нижньому куті: туди сам дотягується великий палець правої руки */
 .float-cta {
   position: fixed;
   right: var(--gutter);
-  bottom: calc(20px + env(safe-area-inset-bottom)); /* не залезать под полоску «домой» на iPhone */
+  bottom: calc(20px + env(safe-area-inset-bottom)); /* не заходити під смужку «додому» на iPhone */
   z-index: 20;
   width: 60px;
   height: 60px;
@@ -346,16 +346,16 @@ p {
 
 .float-cta:active {
   background: var(--accent-hover);
-  transform: scale(0.92); /* отклик на нажатие */
+  transform: scale(0.92); /* відгук на натискання */
 }
 
-/* ===== Баннер согласия на аналитику ===== */
+/* ===== Банер згоди на аналітику ===== */
 .consent {
   position: fixed;
   left: var(--gutter);
   right: var(--gutter);
   bottom: calc(16px + env(safe-area-inset-bottom));
-  z-index: 30; /* выше плавающей кнопки */
+  z-index: 30; /* вище плаваючої кнопки */
   padding: 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -390,7 +390,7 @@ p {
   font-family: inherit;
 }
 
-/* ===== Планшет и ПК ===== */
+/* ===== Планшет і ПК ===== */
 @media (min-width: 768px) {
   :root {
     --gutter: 32px;
@@ -408,7 +408,7 @@ p {
 
   .header__cta,
   .float-cta {
-    display: none; /* на ПК хватает навигации и кнопки на первом экране */
+    display: none; /* на ПК вистачає навігації та кнопки на першому екрані */
   }
 
   .footer {
@@ -419,7 +419,7 @@ p {
     padding: 64px 0;
   }
 
-  /* Две половины: слева информация и кнопка, справа фото и «Обо мне» */
+  /* Дві половини: ліворуч інформація та кнопка, праворуч фото і «Про мене» */
   .hero__inner {
     grid-template-columns: 1fr 1fr;
     align-items: center;

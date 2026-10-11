@@ -1,2 +1,6 @@
 # Локальные настройки Claude Code
 .claude/
+
+# Системні файли
+.DS_Store
+Thumbs.db
